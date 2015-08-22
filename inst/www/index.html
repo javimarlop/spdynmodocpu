@@ -1,60 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>spdynmod</title>
-    
-    <!-- Include order: first jquery, then opencpu.js, and then your code -->
-    <script src="opencpu/jquery-1.11.3.js"></script>
-    <script src="opencpu/opencpu-0.4.js"></script>
-
-    <script>
-    //init this script when the page has loaded
-    $(document).ready(function(){
-      $("#submitbutton").on("click", function(){
-        
-        //disable the button to prevent multiple clicks
-        $("#submitbutton").attr("disabled", "disabled");
-        
-        //read the value for 'myname'
-        //var rnd = $("#rnd").val();
-        
-        //create the plot area on the plotdiv element
-        var req = $("#plotdiv").rplot("run_plot")
-
-        //if R returns an error, alert the error message
-        req.fail(function(){
-          alert("Server error: " + req.responseText);
-        });
-        
-        //after request complete, re-enable the button 
-        req.always(function(){
-          $("#submitbutton").removeAttr("disabled")
-        });
-      });
-    });
-    </script>
-    
-    <style>
-      #plotdiv {
-        position: relative;
-        width: 600px;
-        height: 400px;
-        border: solid gray 1px;
-      }
-    </style>
+  
+    <title>spdynmod GUI</title>
     
   </head>
     
   <body>
-    <h1>Wetland model</h1>
-
-    <!--<b>rnd </b> <input type="character" id="rnd" value="FALSE">-->    
-    <br />
-    <button id="submitbutton" type="button">Run and plot de model</button>
+    <h1>spdynmod GUI</h1>
     
-    <div id="plotdiv"></div>      
+    <ol>
+	  <li><a href="run_standard.html">Standard model run</a></li>
+	  <li><a href="run_advanced1.html">Advanced model run</a></li>
+    </ol>
 
-    <br />
-   
+    
   </body>
 </html>
