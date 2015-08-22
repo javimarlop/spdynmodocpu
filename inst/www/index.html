@@ -1,42 +1,63 @@
 <!DOCTYPE html>
 <html>
   <head>
-  
-    <title>OpenCPU App Demo</title>
+    <title>spdynmod</title>
+    
+    <!-- Include order: first jquery, then opencpu.js, and then your code -->
+    <script src="opencpu/jquery-1.11.3.js"></script>
+    <script src="opencpu/opencpu-0.4.js"></script>
+
+    <script>
+    //init this script when the page has loaded
+    $(document).ready(function(){
+      $("#submitbutton").on("click", function(){
+        
+        //disable the button to prevent multiple clicks
+        $("#submitbutton").attr("disabled", "disabled");
+        
+        //read the value for 'myname'
+        var rnd = parseInt($("#rnd").val());
+        
+        //create the plot area on the plotdiv element
+        var req = $("#plotdiv").rplot("run_plot", {
+          rnd : rnd
+        })
+
+        //if R returns an error, alert the error message
+        req.fail(function(){
+          alert("Server error: " + req.responseText);
+        });
+        
+        //after request complete, re-enable the button 
+        req.always(function(){
+          $("#submitbutton").removeAttr("disabled")
+        });
+      });
+    });
+    </script>
+    
+    <style>
+      #plotdiv {
+        position: relative;
+        width: 600px;
+        height: 400px;
+        border: solid gray 1px;
+      }
+    </style>
     
   </head>
     
   <body>
-    <h1>OpenCPU App Demo</h1>
+    <h1>Wetland model</h1>
     
-    <p>
-      The sole purpose of this OpenCPU app is to demonstrate how to use the <a href="http://github.com/jeroenooms/opencpu.js"><tt>opencpu.js</tt></a> library to call R from Javascript using OpenCPU. 
-    </p>
+    <b>rnd </b> <input type="number" id="rnd" value="F">
     
-    <h2>Introduction</h2>
+    <br />
+    <button id="submitbutton" type="button">Run and plot de model</button>
     
-    <p>The opencpu.js library depends on jQuery and provides some convenient wrappers around $.ajax to call the OpenCPU API.
-    A copy of jquery and opencpu.js must be included with your OpenCPU app.</p>
-    
-    <h2>Topics</h2>
-    
-    <p>Each topic consists of a minimal HTML page demonstrating basic functionality. Look at the source code of the HTML page to learn what is happening.</p>
-    
-    <ol>
-	  <li><a href="radarplot.html">Habitat Explorer (interactive radarplot)</a></li>
-	  <li><a href="plot_shp.html">Basic shapefile plotting</a></li>
-	  <li><a href="plot_shp2.html">Basemap zoom to PA</a></li>
-	  <li><a href="plot_shp3.html">Basemap zoom to Habitat</a></li>
-	  <li><a href="leafmap.html">Basemap Leafmap</a></li>
-	  <li><a href="leafmap2.html">Radarplot And Basemap</a></li>
-	  <li><a href="reachout2.html">Twitter Map app</a></li>
-      <li><a href="hello.html">Calling a function</a></li>
-      <li><a href="plot.html">Making a plot</a></li>
-      <li><a href="data.html">Include data in a package</a></li>
-      <li><a href="upload.html">Upload a file</a></li>
-      <li><a href="chain.html">Chaining functions (use session)</a></li>
-    </ol>
+    <div id="plotdiv"></div>      
 
-    
+    <br />
+   
   </body>
 </html>
