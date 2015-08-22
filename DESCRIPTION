@@ -1,0 +1,31 @@
+Package: spdynmod
+Type: Package
+Title: Spatio-Dynamic Wetland Plant Communities Model
+Description: A spatio-dynamic modelling package that focuses on three
+    characteristic wetland plant communities in a semiarid Mediterranean
+    wetland in response to hydrological pressures from the catchment. The
+    package includes the data on watershed hydrological pressure and the
+    initial raster maps of plant communities but also allows for random initial
+    distribution of plant communities. Ongoing developments of the package
+    focus on offering easy to use tools for creating other spatio-dynamic
+    models.
+Version: 1.1.1
+Date: 2015-08-18
+Author: Javier Martinez-Lopez <javi.martinez.lopez@gmail.com>, Babak Naimi
+    <naimi.b@gmail.com>, Julia Martinez-Fernandez <juliamf@um.es>
+Maintainer: Javier Martinez-Lopez <javi.martinez.lopez@gmail.com>
+License: GPL (>= 2)
+URL: https://github.com/javimarlop/spdynmod
+BugReports: http://github.com/javimarlop/spdynmod/issues
+LazyLoad: yes
+LazyData: yes
+VignetteBuilder: knitr
+Imports:
+    deSolve,
+    animation
+Depends:
+    raster
+Suggests:
+    knitr,
+    roxygen2,
+    testthat

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Map Twitter App</title>
+    
+    <!-- Include order: first jquery, then opencpu.js, and then your code -->
+    <script src="opencpu/jquery-1.10.2.min.js"></script>
+    <script src="opencpu/opencpu-0.4.js"></script>
+    <script>
+    //init this script when the page has loaded
+    $(document).ready(function(){
+      $("#submitbutton").on("click", function(){
+        //disable the button to prevent multiple clicks
+        $("#submitbutton").attr("disabled", "disabled");
+        
+        //read the value for 'myname'
+        var tx = $("#namefield").val();
+        
+        //perform the request
+        var req = ocpu.rpc("gttw", {
+          tx : tx
+        }, function(output){
+          $("#output").text(output.message);
+        });
+        
+        //if R returns an error, alert the error message
+        req.fail(function(){
+          alert("Server error: " + req.responseText);
+        });
+        
+        //after request complete, re-enable the button 
+        req.always(function(){
+          $("#submitbutton").removeAttr("disabled")
+        });
+      });
+    });
+    </script>
+    
+    <style>
+      #output{
+        height: 15px;
+        width: 500px;
+        border: 1px solid gray;
+        padding: 3px;
+      }
+    </style>
+    
+  </head>
+    
+  <body>
+    <h1>Map Twitter App</h1>
+    
+    <b>Your keyword: </b> <input type="text" id="namefield">
+    
+    <button id="submitbutton" type="button">Submit to server!</button>
+    
+    <p id="output"></p>
+   
+  </body>
+</html>

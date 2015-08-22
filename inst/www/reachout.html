@@ -1,0 +1,175 @@
+<!doctype HTML>
+<meta charset = 'utf-8'>
+<html>
+  <head>
+    <title>Twitter Map app</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel='stylesheet'>
+    <link rel='stylesheet' href='http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css'>
+    
+    <script src='http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js' type='text/javascript'></script>
+    <script src='https://rawgithub.com/leaflet-extras/leaflet-providers/gh-pages/leaflet-providers.js' type='text/javascript'></script>
+    <script src='http://harrywood.co.uk/maps/examples/leaflet/leaflet-plugins/layer/vector/KML.js' type='text/javascript'></script>    
+    
+    <script src='http://code.jquery.com/jquery-1.9.1.min.js' type='text/javascript'></script>
+    <script src='http://code.highcharts.com/highcharts.js' type='text/javascript'></script>
+    <script src='http://code.highcharts.com/highcharts-more.js' type='text/javascript'></script>
+    <script src='http://code.highcharts.com/modules/exporting.js' type='text/javascript'></script>
+    <script src='opencpu/opencpu-0.4.js' type='text/javascript'></script>
+    <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js'></script>
+
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css' rel='stylesheet' />
+ <link rel="stylesheet" href="css/screen.css" />    
+
+    <style>
+body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+.legend label,
+.legend span {
+  display:block;
+  float:left;
+  height:15px;
+  width:20%;
+  text-align:center;
+  font-size:9px;
+  color:#808080;
+  }
+
+
+#map-ui {
+    position: absolute;
+    top: 10px;
+    right: 1300px;
+    z-index: 100;
+}
+ 
+#map-ui ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ 
+#map-ui a {
+    font-size: 13px;
+    background: #FFF;
+    color: #3C4E5A;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #BBB;
+    border-bottom-width: 0;
+    min-width: 138px;
+    padding: 10px;
+    text-decoration: none;
+}
+ 
+#map-ui a:hover {
+    background: #ECF5FA;
+}
+ 
+#map-ui li:last-child a {
+    border-bottom-width: 1px;
+    -webkit-border-radius: 0 0 3px 3px;
+    border-radius: 0 0 3px 3px;
+}
+ 
+#map-ui li:first-child a {
+    -webkit-border-radius: 3px 3px 0 0;
+    border-radius: 3px 3px 0 0;
+}
+ 
+#map-ui a.active {
+    background: #3887BE;
+    border-color: #3887BE;
+    border-top-color: #FFF;
+    color: #FFF;
+}
+ 
+#map-ui li:first-child a.active {
+    border-top-color: #3887BE;
+}
+ 
+#map .map-fullscreen {
+    background-color: #28353D;
+}
+    </style>
+    
+  </head>
+<!--
+  <body ng-app>
+    
+   <div class='container'>
+     <div class='row'>
+       <div class='col-md-12'>
+         <h2>Twitter Map app</h2>
+         <a href='http://opencpu.org' class="label label-success">OpenCPU</a>
+       </div>
+      </div>
+       <div class='row' id='medals'>
+        <div class='col-md-3' ng-controller='SochiCtrl'>
+          <select class='form form-control' ng-model='tx' 
+           ng-options='tx for tx in txs'></select>
+          <br/>
+          <select class='form form-control' ng-model='wdpa_id' 
+           ng-options='wdpa_id for wdpa_id in wdpa_ids'></select>
+        </div>
+       <div class='col-md-9'>
+		<div id="sochi"></div>   
+       </div>
+      </div>
+   </div>
+
+
+    
+  </body>
+-->
+
+<div id='map'>
+</div>
+
+    <div class='col-md-3' ng-controller='SochiCtrl'>
+          <select class='form form-control' ng-model='tx' 
+           ng-options='tx for tx in txs'></select>
+          <br/>
+ 
+        </div>
+       <div class='col-md-9'>
+		<div id="sochi"></div>   
+       </div>
+
+<script>
+var map = L.mapbox.map('map','examples.map-20v6611k', {zoomControl: false, 
+minZoom: 4, maxZoom: 24, 
+maxBounds: [[
+73.0, //Further north
+35.0
+],
+[
+25.0, //Further west
+-25.0 //Further east
+]]  
+//maxBounds: [[60.0,45.0],[50.0,-35.0]] 
+})
+.setView([54.54, 12.16], 1)
+//map.legendControl.addLegend(document.getElementById('legend').innerHTML);
+
+  function SochiCtrl($scope){
+    $scope.txs = ['species','virunga','endangered','habitat']
+    $scope.tx = $scope.txs[0]
+    $scope.makeChart = function(){
+       var req = ocpu.rpc("inlineleafmap2", 
+        {"tx": $scope.tx}, function(output){   
+        $('#sochi').html(output)
+       }).fail(function(text){
+         alert("Error: " + req.responseText);
+       });
+    }
+    $scope.$watchCollection('[tx]', function(newValues){
+      console.log(newValues)
+      $scope.makeChart({tx: newValues[0]})
+    })
+   }
+
+  </script>
+</html>

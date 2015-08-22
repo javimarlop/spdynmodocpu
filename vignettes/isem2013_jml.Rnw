@@ -1,0 +1,306 @@
+\documentclass[10pt,xcolor=dvipsnames]{beamer}
+\usepackage{multimedia}  
+%\usepackage{beamerthemesplit}                                                   
+\usepackage{times}                                                              
+\usepackage{color}
+\usepackage{colourlist}
+\usepackage{colortbl}
+\usepackage{enumerate}                                                          
+\usepackage[T1]{fontenc}                                                        
+\usepackage{graphicx} 
+\usepackage{fancybox} %cajas
+\usepackage{indentfirst}
+\usepackage{hyperref}
+
+\usepackage{rotating} % para rotar celdillas dentro de tablas y tablas
+%\usepackage{beamerthemeshadow}  % Sombreado en las diapositivas                                                
+\beamertemplatetransparentcovereddynamic 
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc} % iso-8859-15
+%\usepackage[utf8]{inputenc} % UTF-8
+%\usepackage{beamer_bgWhite}
+\usepackage{latexsym}
+%\usecolortheme{seahorse} %tonos lila
+%\usecolortheme[named=Plum]{structure} %violetas-negros
+%\usecolortheme[named=Brown]{structure}% marrones
+%\usetheme[height=7mm]{Rochester} 
+
+\usefonttheme{serif}
+\usecolortheme{rose}  
+\usetheme{Goettingen}
+\hypersetup{colorlinks=true, linkcolor=Blue, urlcolor=Blue}
+
+\title[Wetland model]{Spatio-temporal dynamic modeling of plant communities responses to hydrological pressures in a semiarid Mediterranean wetland}
+\author[ISEM 2013]{J. Mart{\'i}nez-L{\'o}pez$^{1}$, J. Mart{\'i}nez-Fern{\'a}ndez$^{1,2}$, B. Naimi$^{3}$, M.F. Carre{\~n}o$^{1}$ and M.A. Esteve$^{1}$}
+
+\date{\scriptsize $^{1}$Ecology and Hydrology Department - University of Murcia (Murcia, Spain)\\$^{2}$Applied Biology Dept. University Miguel Hernandez (Elche, Spain)\\$^{3}$ITC - University of Twente (Enschede, The Netherlands)}
+
+
+%\VignetteIndexEntry{spdynmod slides}
+
+\begin{document}
+
+%\renewcommand{\tablename}{\bf }
+%\setbeamercolor{frametitle}{fg=blue} %para cambiar color de los titulos         
+%\setbeamercolor{author}{fg=marron} %para cambiar color del autor  
+\setbeamercolor{author}{fg=blue} %para cambiar color del autor                
+%\setbeamercolor{date}{fg=marron} %para cambiar color de los titulos             
+%\setbeamercolor{title}{fg=blue,bg=blue!15!white} %para cambiar color del titulo 
+\setbeamercolor{item}{fg=blue} %para cambiar color de los items 
+\setbeamertemplate{items}[triangle] %forma de los items : triangle, circle, square
+
+\frame{\maketitle
+\begin{center}
+\includegraphics[width=75mm]{figures/bandeau_conf.png}
+\end{center}
+}
+
+\section{Introduction}
+
+\frame{\frametitle{Study area}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{figures/fig1.png}
+\end{center}
+}
+
+\frame{\frametitle{Marina del Carmoli wetland (300 ha)}
+\begin{center}
+\includegraphics[width=\textwidth]{figures/cr10.png}
+\end{center}
+}
+
+\frame{\frametitle{Wetland plant communities}
+\begin{block}{}
+Semiarid Mediterranean saline wetlands are semi-terrestrial ecosystems
+\end{block}
+\begin{center}
+\includegraphics[width=\textwidth]{figures/mc_ila_pcoms.png}
+\end{center}
+\begin{exampleblock}{}
+\begin{itemize}
+\item Salt steppe (left) - priority habitat by the Habitats Directive
+\item Salt marsh (center) - habitat of interest by the HD
+\item Reed beds (right) ({\it Phragmites australis}) - invasive
+\end{itemize}
+\end{exampleblock}
+}
+
+\frame{\frametitle{External water inputs}
+Percentage of irrigated areas has increased in the last decades due to the opening of a water transfer (Mart\'inez-L\'opez et al., 2013)
+\begin{center}
+\includegraphics[width=\textwidth]{figures/cr10_ws_lulc.png}
+\end{center}
+}
+
+\frame{\frametitle{Plant communities change}
+\begin{alertblock}{}
+Important plant communities are being lost!
+\end{alertblock}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{figures/vegmaps_mc.png}
+\\
+Carre\~no et al., 2008; Mart\'inez-L\'opez et al., 2012
+\end{center}
+}
+
+%\section{Objectives}
+
+\frame{\frametitle{Objective}
+\begin{block}{}
+\begin{itemize}
+\item Spatially explicit wetland model of how irrigated agriculture is affecting plant community composition in this semiarid Mediterranean wetland
+%\begin{itemize}
+%\item tool for wetland conservation and management studies
+%\item forecast the loss of important plant communities due to irrigation pressures
+%\end{itemize}
+\end{itemize}
+\end{block}
+}
+
+\section{Methods}
+
+\frame{\frametitle{Modelling environment}
+\begin{block}{}
+\begin{itemize}
+\item R as a modelling environment:
+\begin{itemize}
+\item GIS capabilities
+\item source code is flexible
+\item free availabity and growing user community
+\end{itemize}
+\end{itemize}
+\end{block}
+\begin{center}
+\includegraphics[width=0.25\textwidth]{figures/Rlogo.png}
+\end{center}
+}
+
+\frame{\frametitle{State variables}
+\begin{exampleblock}{}
+\begin{itemize}
+\item Wetland is divided into pixels (25 m)
+\item Plant communities are modelled separately pixel by pixel (4 maps)
+\item The total abundance of plant communities within a pixel is limited so:
+\begin{itemize}
+\item competition among plant communities mediated by
+\begin{itemize}
+\item total drainge water input to the wetland
+\item spatial environmental variables influencing water availability and growth
+\end{itemize}
+\item the dispersion of other PC from the surrounding pixels
+\end{itemize}
+\end{itemize}
+\end{exampleblock}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{figures/pixel.png}
+\end{center}
+}
+
+\frame{\frametitle{Initial and validation maps of plant communities}
+\begin{exampleblock}{}
+Model was tested by means of remote sensing data for the period 1992-2008
+\end{exampleblock}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{figures/vegmaps_mc.png}
+\\
+Carre\~no et al., 2008; Mart\'inez-L\'opez et al., 2012
+\end{center}
+}
+
+%\frame{\frametitle{Main variables and parameters}
+%\begin{exampleblock}{}
+%Flow from state variable A to B (per pixel)
+%\end{exampleblock}
+%\centering
+%\includegraphics[width=\textwidth]{figures/mcdynmod1.png}
+%\begin{alertblock}{}
+%Shaded squares represent non spatial variables/parameters and oval shaped variables refer to state variables.
+%\end{alertblock}
+%}
+
+\frame{\frametitle{Model assumptions I}
+\begin{exampleblock}{}
+\begin{itemize}
+\item Increasing water input
+\item Only conversion to more humid / less saline plant communities
+\end{itemize}
+\end{exampleblock}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{figures/mc_ila_pcoms.png}\\
+\includegraphics[width=0.7\textwidth]{figures/growth.png}
+\end{center}
+}
+
+\frame{\frametitle{Model assumptions II}
+\begin{exampleblock}{native vs. invasive taxa}
+\begin{itemize}
+\item invasive reed beds are potentially present in all pixels
+\item salt marsh is able to disperse into neighbour pixels
+\end{itemize}
+\end{exampleblock}
+\begin{center}
+\includegraphics[width=0.3\textwidth]{figures/expansion2.png} \hspace{5mm}
+\includegraphics[width=0.5\textwidth]{figures/neighborhood3.png}
+\end{center}
+}
+
+\frame{\frametitle{Non spatial forcing input}
+\begin{exampleblock}{Drainage water input}
+WARP index (Mart\'inez-L\'opez et al., 2014a,b)
+\end{exampleblock}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{figures/mc_ila_warp_time.png}
+\end{center}
+}
+
+\frame{\frametitle{Wetland environmental spatial parameters}
+\begin{exampleblock}{}
+\begin{itemize}
+\item (A) distance map to ephemeral river 1 ({\bf reed beds})
+\item (B) distance map to ephemeral river 2 ({\bf reed beds})
+\item (C) Flow accumulation map ({\bf salt marsh})
+\end{itemize}
+\end{exampleblock}
+\includegraphics[angle=-90,width=\textwidth]{figures/env_spat_var.png}
+\begin{alertblock}{}
+\begin{itemize}
+\item All parameters are on a relative 0--1 scale.
+%\item Map algebra operations were performed using GRASS GIS and imported into R using the 'rgdal' and 'raster' libraries.
+\end{itemize}
+\end{alertblock}
+}
+
+\frame{\frametitle{Model diagram}
+\begin{center}
+\includegraphics[width=\textwidth]{figures/mcdynmod3.png}
+\end{center}
+}
+
+\frame{\frametitle{Model development/execution}
+\begin{block}{}
+\begin{enumerate}
+\item Initial dynamic model was developed using Stella (1 pixel)
+\item Conversion to R using 'StellaR' script (Naimi and Voinov, 2012)
+\item State variables and spatial environmental variables as matrices
+\item Model wrapped as a R function
+\item ode.2D("euler" method, time = 24 year, TS = 0.25) {\small (library "deSolve")}
+\end{enumerate}
+\end{block}
+%\begin{center}
+%\includegraphics[width=0.5\textwidth]{figures/neighborhood2.png}
+%\end{center}
+}
+
+%\section{Results}
+
+%\frame{\frametitle{}
+%Overall Accuracy: 54\% -- 71\%
+%\begin{center}
+%\includegraphics[angle=-90,width=0.34\textwidth]{figures/rstack_compar.png}
+%\end{center}
+%}
+
+%\frame{\frametitle{Simulated total area of each plant community}
+%\centering
+%\includegraphics[width=0.6\textwidth]{figures/val_all_areas.png}
+%\begin{alertblock}{}
+%Dots represent the are occupied by each plant community based on RS data and model simulated values are represented by lines
+%\end{alertblock}
+%}
+
+%\frame{\frametitle{0D Error and similarity measures}
+%\begin{center}
+%\begin{tabular}{lccc}
+%{\bf Plant community} & {\bf r} & {\bf NRMSE (\%)} & {\bf EF} \\ 
+%Salt steppe & 0.91 & 44 & 0.77 \\ % 0.01124
+%Salt marsh & 0.84 & 54 & 0.65 \\ %0.03817
+%Reed beds & 0.88 & 53 & 0.65 \\ % 0.02124
+%\end{tabular}
+%\end{center}
+%\begin{alertblock}{}
+%\begin{itemize}
+%\item 'r' corresponds to the Pearson correlation coefficient ($P < 0.05$)
+%\item 'NMRSE' to the normalized root mean squared error
+%\item 'EF' to the efficiency factor.
+%\end{itemize}
+%\end{alertblock}
+%}
+
+\section{Conclusions}
+
+\frame{\frametitle{Conclusions}
+\begin{block}{}
+\begin{enumerate}
+\item The model serves as a tool for
+\begin{itemize}
+\item wetland conservation and management studies (habitat loss)
+\item testing plant community interactions
+\item testing relationships between plant communities and environmental variables in space and time
+\end{itemize}
+\item The library undergoes further developments in order to become a flexible tool for the development of new spatio-dynamic models
+\end{enumerate}
+\end{block}
+}
+
+\end{document}
+

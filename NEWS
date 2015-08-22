@@ -1,0 +1,6 @@
+spdynmod 1.1.1
+-----------------
+
+* plot and Windows compatibility bugs fixed
+* Multiple Resolution Goodness of Fit (mrgf) function added
+* Imagemagick needs to be installed on the system to run the animations (http://www.imagemagick.org)
