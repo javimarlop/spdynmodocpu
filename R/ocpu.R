@@ -1,4 +1,4 @@
-run_plot(rnd=rnd){
-run_model(rnd=rnd)
+run_plot<-function(){
+run_model()
 plot_maps()
 }

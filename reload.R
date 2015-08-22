@@ -5,5 +5,5 @@
 #install_github('ramnathv/rCharts@dev')
 #install_github('ramnathv/rMaps')
 devtools::install('.')
-library(opencpu)
-opencpu$browse('library/ocpuRadarplot/www/')
+library(spdynmod)
+opencpu$browse('library/spdynmod/www/')

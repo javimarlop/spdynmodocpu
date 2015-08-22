@@ -16,12 +16,10 @@
         $("#submitbutton").attr("disabled", "disabled");
         
         //read the value for 'myname'
-        var rnd = parseInt($("#rnd").val());
+        //var rnd = $("#rnd").val();
         
         //create the plot area on the plotdiv element
-        var req = $("#plotdiv").rplot("run_plot", {
-          rnd : rnd
-        })
+        var req = $("#plotdiv").rplot("run_plot")
 
         //if R returns an error, alert the error message
         req.fail(function(){
@@ -49,9 +47,8 @@
     
   <body>
     <h1>Wetland model</h1>
-    
-    <b>rnd </b> <input type="number" id="rnd" value="F">
-    
+
+    <!--<b>rnd </b> <input type="character" id="rnd" value="FALSE">-->    
     <br />
     <button id="submitbutton" type="button">Run and plot de model</button>
     
