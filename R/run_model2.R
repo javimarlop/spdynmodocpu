@@ -16,7 +16,7 @@
 #' @examples
 #' ## Not run run_model()
 
-run_model<-function(pgr_rb = 0.005, pgr_sm = 0.2, rnd, method = 'euler', TS = 0.25){
+run_model2<-function(pgr_rb, pgr_sm, rnd, method = 'euler', TS = 0.25){
 
 ##print(paste('random initial maps = ',rnd))
 

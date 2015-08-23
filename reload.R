@@ -6,4 +6,4 @@
 #install_github('ramnathv/rMaps')
 devtools::install('.')
 library(spdynmod)
-opencpu$browse('library/spdynmod/www/')
+opencpu$browse('library/spdynmodocpu/www/')

@@ -1,7 +1,7 @@
-Package: spdynmod
+Package: spdynmodocpu
 Type: Package
-Title: Spatio-Dynamic Wetland Plant Communities Model
-Description: A spatio-dynamic modelling package that focuses on three
+Title: A GUI for spdynmod using OpenCPU
+Description: Spdynmod is a spatio-dynamic modelling package that focuses on three
     characteristic wetland plant communities in a semiarid Mediterranean
     wetland in response to hydrological pressures from the catchment. The
     package includes the data on watershed hydrological pressure and the
@@ -9,10 +9,9 @@ Description: A spatio-dynamic modelling package that focuses on three
     distribution of plant communities. Ongoing developments of the package
     focus on offering easy to use tools for creating other spatio-dynamic
     models.
-Version: 1.2
+Version: 1.0
 Date: 2015-08-22
-Author: Javier Martinez-Lopez <javi.martinez.lopez@gmail.com>, Babak Naimi
-    <naimi.b@gmail.com>, Julia Martinez-Fernandez <juliamf@um.es>, Juan Arevalo Torres <juan.arevalo.torres@gmail.com >
+Author: Javier Martinez-Lopez <javi.martinez.lopez@gmail.com>, Juan Arevalo Torres <juan.arevalo.torres@gmail.com >
 Maintainer: Javier Martinez-Lopez <javi.martinez.lopez@gmail.com>
 License: GPL (>= 2)
 URL: https://github.com/javimarlop/spdynmod
