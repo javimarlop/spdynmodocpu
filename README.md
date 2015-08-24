@@ -8,6 +8,8 @@ spdynmod GUI using OpenCPU
 ```
 library(devtools)
 install_github('javimarlop/spdynmodocpu')
+library(spdynmodocpu)
+opencpu$browse('library/spdynmodocpu/www/')
 ```
 
 
