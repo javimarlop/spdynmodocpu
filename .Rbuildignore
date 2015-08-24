@@ -1,15 +1,6 @@
-movie*.gif
-mrgf_1984.png
-mrgf_1992k0.png
-mrgf_1995k0.png
-mrgf_1997k0.png
-mrgf_2001k0.png
-mrgf_2008k0.png
 README.md
 .git
 .RData
 .Rhistory
-maps_validation
 build_test.sh
-example_plotkml4ts.R
-
+opencpu-server.pdf

@@ -29,7 +29,7 @@ $(function(){
   $("#plotbutton").on("click", function(e){
     e.preventDefault();
     $("#plotbutton").attr("disabled", "disabled")
-    var req = $("#plotdiv").rplot("run_model", {
+    var req = $("#plotdiv").rplot("run_plot2", {
       pgr_sm : parseFloat($("#pgr_sm").val()),
       rnd : $("#rnd").val(),
       pgr_rb : parseFloat($("#pgr_rb").val())      

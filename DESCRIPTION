@@ -1,30 +1,20 @@
 Package: spdynmodocpu
 Type: Package
 Title: A GUI for spdynmod using OpenCPU
-Description: Spdynmod is a spatio-dynamic modelling package that focuses on three
-    characteristic wetland plant communities in a semiarid Mediterranean
-    wetland in response to hydrological pressures from the catchment. The
-    package includes the data on watershed hydrological pressure and the
-    initial raster maps of plant communities but also allows for random initial
-    distribution of plant communities. Ongoing developments of the package
-    focus on offering easy to use tools for creating other spatio-dynamic
-    models.
+Description: A graphical user interface for the spdynmod R package using OpenCPU.
 Version: 1.0
 Date: 2015-08-22
 Author: Javier Martinez-Lopez <javi.martinez.lopez@gmail.com>, Juan Arevalo Torres <juan.arevalo.torres@gmail.com >
 Maintainer: Javier Martinez-Lopez <javi.martinez.lopez@gmail.com>
 License: GPL (>= 2)
-URL: https://github.com/javimarlop/spdynmod
-BugReports: http://github.com/javimarlop/spdynmod/issues
+URL: https://github.com/javimarlop/spdynmodocpu
+BugReports: http://github.com/javimarlop/spdynmodocpu/issues
 LazyLoad: yes
 LazyData: yes
 VignetteBuilder: knitr
-Imports:
-    deSolve,
-    animation
 Depends:
-    opencpu,
-    raster
+    spdynmod,
+    opencpu
 Suggests:
     knitr,
     roxygen2,
