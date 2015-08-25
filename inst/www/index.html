@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>spdynmod model</title>
+<title>Spdynmod model</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -12,12 +12,12 @@
 
 <!-- some optional styling stuff -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/css.css" rel="stylesheet" media="screen">
 <link href="jqueryui/css/ui-lightness/jquery-ui-1.10.3.custom.css" rel="stylesheet" media="screen">
 
+<!-- javascript libraries -->
 <script src="bootstrap/js/bootstrap.js"> </script>
 <script src="jqueryui/jquery-ui-1.10.3.custom.js"> </script>
-
-
 
 <script> 
 $(function(){
@@ -43,44 +43,38 @@ $(function(){
   //plot the default values on page load
 <!--  $("#plotbutton").trigger("click")-->
 });
+
+$(function(){
+  //button handler
+  $("#mrgfbutton").on("click", function(f){
+    f.preventDefault();
+    $("#mrgfbutton").attr("disabled", "disabled")
+    var req = $("#mrgfdiv").rplot("mrgf2", {
+	  year: parseFloat($("#year").val()),
+      w1: parseFloat($("#w1").val()),
+      w2: parseFloat($("#w2").val())      
+    }).always(function(){
+      $("#mrgfbutton").removeAttr("disabled");
+    }).fail(function(){
+      alert("HTTP error " + req.status + ": " + req.responseText);
+    });
+  });
+});
 </script>
-<style>
 
-#plotdiv {
-  width: 90%;
-  height: 400px;
-  border: 1px solid #e3e3e3;
-  border-radius: 4px;
-}
-
-<!--.span8 {-->
-<!--    overflow-y: hidden;-->
-<!--    overflow-x: hidden;-->
-<!--}-->
-
-#rnd {
-  width: 90px;
-}
-
-#plotbutton{
-  width: 120px;
-  margin-left: 20px;
-}
-
-</style>
 </head>
 
 <body>
   <div class="container">
 
     <div class="page-header">
-      <h1>spdynmod model</h1>
+      <h1>Spatio-dynamic wetland plant communites model</h1>
     </div>
     <div class="container">
 
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+    <li><a data-toggle="tab" href="#menu1">Model Validation</a></li>
   </ul>
 
   <div class="tab-content">
@@ -89,24 +83,19 @@ $(function(){
             <br />
 <!--    <div class="row">-->
       <div class="span3">
-
         <form class="well" id="paramform">
           <fieldset>
             <legend>Parameters</legend>
             <label>pgr_rb</label> 
             <input class="input-small" id="pgr_rb" type="number" value="0.005" step="0.001"></input>
-
             <label>Random</label> 
             <select class="input-medium" id="rnd">
               <option value="FALSE">FALSE</option>
               <option value="TRUE">TRUE</option>
             </select> 
-
             <label>pgr_sm</label> 
-            <input class="input-small" id="pgr_sm" type="number" value="0.2" step="0.1"></input>
-            
-            <br />
-            
+            <input class="input-small" id="pgr_sm" type="number" value="0.2" step="0.1"></input>  
+            <br />      
             <button class="btn btn-small btn-primary" id="plotbutton"><i class="icon-ok icon-white"></i> Run model</button>
           </fieldset>
         </form>
@@ -119,10 +108,30 @@ $(function(){
       
     </div>
     <div id="menu1" class="tab-pane fade">
-      <h3>Menu 1</h3>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	  <div class="span3">
+        <form class="well" id="paramform">
+          <fieldset>
+            <legend>Goodness of fit Parameters</legend>
+			<label>Year of interest</label> 
+            <input class="input-small" id="year" type="number" value="1992" step="1"></input>
+            <label>Initial Window Size</label> 
+            <input class="input-small" id="w1" type="number" value="1" step="1"></input>
+            <label>Final Window Size</label> 
+            <input class="input-small" id="w2" type="number" value="5" step="1"></input>  
+            <br />      
+            <button class="btn btn-small btn-primary" id="mrgfbutton"><i class="icon-ok icon-white"></i> Run Goodness of fit</button>
+          </fieldset>
+        </form>
+      </div>
+	  
+	   <div class="span8">
+        <div id="mrgfdiv"></div>
+	  
     </div>
+	
+	
 
   </div>
+
 </body>
 </html>
