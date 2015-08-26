@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Spdynmod model</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="css/leaflet.css" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+<!-- ocpu library -->
+<script src="opencpu/jquery-1.10.2.min.js"> </script>
+<script src="opencpu/opencpu-0.4.js"> </script>
+
+<!-- some optional styling stuff -->
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/css.css" rel="stylesheet" media="screen">
+<link href="jqueryui/css/ui-lightness/jquery-ui-1.10.3.custom.css" rel="stylesheet" media="screen">
+
+
+<!-- javascript libraries -->
+
+<script src="bootstrap/js/bootstrap.js"> </script>
+<script src="jqueryui/jquery-ui-1.10.3.custom.js"> </script>
+ <script src="js/leaflet.js"></script>
+
+<script> 
+$(function(){
+
+  //optional, requires jquery-ui.
+  //$("#plotdiv").resizable()
+  
+  //button handler
+  $("#plotbutton").on("click", function(e){
+    e.preventDefault();
+    $("#plotbutton").attr("disabled", "disabled")
+    var req = $("#plotdiv").rplot("run_plot2", {
+      pgr_sm : parseFloat($("#pgr_sm").val()),
+      rnd : $("#rnd").val(),
+      pgr_rb : parseFloat($("#pgr_rb").val())      
+    }).always(function(){
+      $("#plotbutton").removeAttr("disabled");
+    }).fail(function(){
+      alert("HTTP error " + req.status + ": " + req.responseText);
+    });
+  });
+  
+  //plot the default values on page load
+<!--  $("#plotbutton").trigger("click")-->
+});
+
+$(function(){
+  //button handler
+  $("#mrgfbutton").on("click", function(f){
+    f.preventDefault();
+    $("#mrgfbutton").attr("disabled", "disabled")
+    var req = $("#mrgfdiv").rplot("mrgf2", {
+	  year: parseFloat($("#year").val()),
+      w1: parseFloat($("#w1").val()),
+      w2: parseFloat($("#w2").val())      
+    }).always(function(){
+      $("#mrgfbutton").removeAttr("disabled");
+    }).fail(function(){
+      alert("HTTP error " + req.status + ": " + req.responseText);
+    });
+  });
+});
+</script>
+
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Spatio-dynamic wetland plant communites model</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a data-toggle="tab" href="#map">Home</a></li>
+		<li><a data-toggle="tab" href="#model">Run Model</a></li>
+        <li><a data-toggle="tab" href="#menu1">Model Validation</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+  <div class="tab-content">
+     <div id="map" class="tab-pane fade in active">
+  </div>
+
+    <div id="model" class="tab-pane fade">
+      <div class="span3">
+        <form class="well" id="paramform">
+          <fieldset>
+            <legend>Parameters</legend>
+            <label>pgr_rb</label> 
+            <input class="input-small" id="pgr_rb" type="number" value="0.005" step="0.001"></input>
+            <label>Random</label> 
+            <select class="input-medium" id="rnd">
+              <option value="FALSE">FALSE</option>
+              <option value="TRUE">TRUE</option>
+            </select> 
+            <label>pgr_sm</label> 
+            <input class="input-small" id="pgr_sm" type="number" value="0.2" step="0.1"></input>  
+            <br />      
+            <button class="btn btn-small btn-primary" id="plotbutton"><i class="icon-ok icon-white"></i> Run model</button>
+          </fieldset>
+        </form>
+      </div>
+      
+      <div class="span6">
+        <div id="plotdiv"></div>
+      </div>
+<!--    </div>-->
+    </div>
+    <div id="menu1" class="tab-pane fade">
+	  <div class="span3">
+        <form class="well" id="paramform1">
+          <fieldset>
+            <legend>Goodness of fit Parameters</legend>
+			<label>Year of interest</label> 
+            <input class="input-small" id="year" type="number" value="1992" step="1"></input>
+            <label>Initial Window Size</label> 
+            <input class="input-small" id="w1" type="number" value="1" step="1"></input>
+            <label>Final Window Size</label> 
+            <input class="input-small" id="w2" type="number" value="5" step="1"></input>  
+            <br />      
+            <button class="btn btn-small btn-primary" id="mrgfbutton"><i class="icon-ok icon-white"></i> Run Goodness of fit</button>
+          </fieldset>
+        </form>
+      </div> 
+	   <div class="span6">
+        <div id="mrgfdiv"></div>  
+    </div>
+  </div>
+  <div class="container">
+  
+ <script> 
+var map = L.map('map').setView([37.693627, -0.825708], 13);
+
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+</script>
+
+</body>
+</html>
