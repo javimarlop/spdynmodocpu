@@ -12,6 +12,7 @@
 
 }
 #map { height: 1280px; 
+       margin-top: 45px;
 }
 .span3 {
     width: 220px;
