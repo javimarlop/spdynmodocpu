@@ -4,7 +4,7 @@ Title: A GUI for spdynmod using OpenCPU
 Description: A graphical user interface for the spdynmod R package using OpenCPU.
 Version: 1.0
 Date: 2015-08-22
-Author: Javier Martinez-Lopez <javi.martinez.lopez@gmail.com>, Juan Arevalo Torres <juan.arevalo.torres@gmail.com >
+Author: Juan Arevalo Torres <juan.arevalo.torres@gmail.com>, Javier Martinez-Lopez <javi.martinez.lopez@gmail.com>
 Maintainer: Javier Martinez-Lopez <javi.martinez.lopez@gmail.com>
 License: GPL (>= 2)
 URL: https://github.com/javimarlop/spdynmodocpu
