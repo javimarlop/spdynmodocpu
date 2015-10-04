@@ -11,8 +11,19 @@
     width: 60%;
 
 }
-#map { height: 1280px; 
+#map { height: 685px; 
        margin-top: 45px;
+	   width: 100%;
+	  position: relative;
+	   
+}
+#controls {
+margin-top:100px;
+width:250px;
+height:auto;
+}
+.span12 {
+    width: 1313px;
 }
 .span3 {
     width: 220px;
