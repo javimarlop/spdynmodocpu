@@ -158,12 +158,16 @@ $(function(){
   </div>
  
 <div id="contact" class="tab-pane fade">
+       <div align="center">
        <br> <br> <br>
        <img src="img/logo_bc3.gif" class="img-rounded" alt="BC3" width="234" height="107">
        <img src="img/murcia.png" class="img-rounded" alt="University of Murcia" width="234" height="107">
        <img src="img/logo.jpg" class="img-rounded" alt="Randbee" width="180" height="145">
-       <br><b><p>Juan Arévalo:</b> juan.arevalo@randbe.es<br>
-       <b><p>Javier Martínez-López:</b> javier.martinez@bc3research.org
+       </div> 
+       <div align="center">
+       <br><b>Juan Arévalo:</b> juan.arevalo@randbe.es<br>
+       <b>Javier Martínez-López:</b> javier.martinez@bc3research.org
+       </div>   
   </div>
   </div>
  
@@ -181,6 +185,7 @@ $(function(){
     "weight": 5,
     "opacity": 0.65
 };
+
 var map = L.map('map').setView([37.643627, -0.925708], 12);
 
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -191,6 +196,10 @@ L.geoJson(geojsonFeature, {
 }).addTo(map);
 
 control.addTo(map);
+
+
+
+
 
 
 </script>
