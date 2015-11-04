@@ -197,11 +197,6 @@ L.geoJson(geojsonFeature, {
 
 control.addTo(map);
 
-
-
-
-
-
 </script>
 
 </body>
