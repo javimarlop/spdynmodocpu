@@ -22,7 +22,6 @@
 margin-top:100px;
 width:250px;
 height:auto;
-position:fixed;
 }
 .span12 {
     width: 1313px;

@@ -167,7 +167,7 @@ $(function(){
     </div>
 
 <li class="dropdown" class="tab-pane fade">
-    <a data-toggle="dropdown" class="dropdown-toggle" <b class="caret"></b></a>
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Acerca de <b class="caret"></b></a>
         <ul role="menu" class="dropdown-menu">
             <li><a href="#">Quienes somos</a></li>
             <li><a href="#">Ubicación</a></li>
