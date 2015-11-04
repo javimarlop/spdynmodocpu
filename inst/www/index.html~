@@ -88,7 +88,7 @@ $(function(){
         <li><a data-toggle="tab" href="#menu1">Model Validation</a></li>
         <li><a data-toggle="dropdown" href="#dropdown">Dropdown  
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"> 
-            <li><a href="#whymodel">Why this model?</a></li>
+            <li><a href="wma.html">Why this model?</a></li>
             <li><a href="#">How does the model work?</a></li>
             <li><a href="#">Model validation</a></li></a></li>
             <li><a href="#">References</a></li></a></li>  </ul>
@@ -98,7 +98,9 @@ $(function(){
   </div>
 </div>
 
-  <div class="tab-content"> 
+  <div class="tab-content">
+     
+ 
 	 <div id="mapa" class="tab-pane fade in active">	
 	  <div id="controls" class="col-md-6">
 	<p><b>Spatio-Dynamic Wetland Plant Communities Model</b> <br> <br> A spatio-dynamic modelling package that focuses on three characteristic wetland plant communities in a semiarid Mediterranean wetland in response to hydrological pressures from the catchment. The package includes the data on watershed hydrological pressure and the initial raster maps of plant communities but also allows for random initial distribution of plant communities. 
@@ -154,21 +156,17 @@ $(function(){
         <div id="mrgfdiv"></div>  
     </div>
   </div>
-  
-
- <div id="whymodel">
-
+ 
 <div id="contact" class="tab-pane fade">
        <br> <br> <br>
        <img src="img/logo_bc3.gif" class="img-rounded" alt="BC3" width="234" height="107">
        <img src="img/murcia.png" class="img-rounded" alt="University of Murcia" width="234" height="107">
        <img src="img/logo.jpg" class="img-rounded" alt="Randbee" width="180" height="145">
-       <br><b>Juan Arévalo:</b> juan.arevalo@randbe.es<br>
-       <b>Javier Martínez-López:</b> javier.martinez@bc3research.org
+       <br><b><p>Juan Arévalo:</b> juan.arevalo@randbe.es<br>
+       <b><p>Javier Martínez-López:</b> javier.martinez@bc3research.org
   </div>
-
-
-   
+  </div>
+ 
  <script> 
  var geojsonFeature = {
 "type": "FeatureCollection",
