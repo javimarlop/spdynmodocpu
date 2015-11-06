@@ -2,4 +2,3 @@
 
 import(opencpu)
 import(spdynmod)
-export(pplot_maps)
