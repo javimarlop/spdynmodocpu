@@ -2,4 +2,4 @@
 
 import(opencpu)
 import(spdynmod)
-export(pplot_maps)
+export(plotr_leaflet)

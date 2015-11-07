@@ -1,10 +1,34 @@
-plotr_leaflet<-function(){
-r<-raster('refmap.tif')
+#' Plot abundance maps of plant communities using Leaflet.
+#' 
+#' Plot abundance maps of plant communities in a given year. 
+#'
+#' @param year year to plot (from 1984 to 2008)
+#'
+#' @return by default plots the final plant communities map (year = 2008).
+#'
+#' @keywords plot
+#'
+#' @export
+#' 
+#' @examples
+#' ## Not plotr_leaflet()
+
+
+plotr_leaflet<-function(year = 2008){
+
+rpath = paste(find.package('spdynmod'),'/extdata',sep='')
+r<-raster::raster(paste(rpath,'/refmap.tif',sep=''))
 
 a<-r
-b<-r
-c<-r
-d<-r
+
+out<-get('out')
+nr<-get('nr')
+nc<-get('nc')
+NN<-get('NN')
+
+i <- (year-1984)*4
+
+if(i==0){i = 1}
 
 a0<-raster::raster(matrix(nrow = nr, ncol = nc, out[1, (3*NN+2):(4*NN+1)]))
 
