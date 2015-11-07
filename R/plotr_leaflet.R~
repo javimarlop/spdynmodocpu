@@ -16,7 +16,7 @@
 
 plotr_leaflet<-function(year = 2008){
 
-rpath = paste(find.package('spdynmodocpu'),'/extdata',sep='')
+rpath = paste(find.package('spdynmod'),'/extdata',sep='')
 r<-raster::raster(paste(rpath,'/refmap.tif',sep=''))
 
 a<-r

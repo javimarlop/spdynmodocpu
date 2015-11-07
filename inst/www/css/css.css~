@@ -22,12 +22,13 @@
 margin-top:100px;
 width:250px;
 height:auto;
+position:fixed;
 }
 .span12 {
     width: 1313px;
 }
 .span3 {
-    width: 220px;
+    width: 320px;
     margin-top: 100px;
 }
 .container { width: 1140px;

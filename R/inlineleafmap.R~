@@ -1,0 +1,7 @@
+inlineleafmap <- function(year=2008){
+  output <- plotr_leaflet(year=2008)
+  print(output)
+  #a$height <- 400
+#paste(capture.output(a))
+  #paste(capture.output(a$show('inline')), collapse ='\n')
+}

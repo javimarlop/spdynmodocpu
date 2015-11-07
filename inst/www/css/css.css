@@ -18,6 +18,13 @@
        margin-left: 250px;
 	   
 }
+#map1 { height: 685px; 
+       margin-top: 45px;
+	   width: 100%;
+	  position: right;
+       margin-left: 250px;
+	   
+}
 #controls {
 margin-top:100px;
 width:250px;

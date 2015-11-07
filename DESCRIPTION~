@@ -14,8 +14,7 @@ LazyData: yes
 VignetteBuilder: knitr
 Depends:
     spdynmod,
-    opencpu,
-    leaflet
+    opencpu
 Suggests:
     knitr,
     roxygen2,
