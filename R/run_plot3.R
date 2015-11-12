@@ -1,5 +1,5 @@
 run_plot3<-function(rnd=rnd,pgr_rb=pgr_rb,pgr_sm=pgr_sm){
-run_model(rnd=rnd,pgr_rb=pgr_rb,pgr_sm=pgr_sm)
+#run_model(rnd=rnd,pgr_rb=pgr_rb,pgr_sm=pgr_sm)
 #ant(rnd=rnd,pgr_rb=pgr_rb,pgr_sm=pgr_sm)
 aa0<-inlineleafmap(year=2008)
 #output <- plotr_leaflet(year=2008)
