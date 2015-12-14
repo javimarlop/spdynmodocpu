@@ -1,8 +1,9 @@
 run_plot3<-function(rnd=rnd,pgr_rb=pgr_rb,pgr_sm=pgr_sm){
 #run_model(rnd=rnd,pgr_rb=pgr_rb,pgr_sm=pgr_sm)
-#ant(rnd=rnd,pgr_rb=pgr_rb,pgr_sm=pgr_sm)
-aa0<-inlineleafmap(year=2008)
-#output <- plotr_leaflet(year=2008)
+#a<-ant(rnd=rnd,pgr_rb=pgr_rb,pgr_sm=pgr_sm)
+#aa0<-inlineleafmap(year=2008)
+output <- plotr_leaflet(year=2008)
+library(RJSONIO)
 #a1a<-gsub('<html>','<html><body>', aa, fixed=TRUE)
 #a2a<-gsub('</html>','</body></html>', a1a, fixed=TRUE)
 #a0<-paste(capture.output(aa), collapse ='\n')
@@ -15,5 +16,15 @@ aa0<-inlineleafmap(year=2008)
 #a<-gsub("\n", "", aa2, fixed=TRUE)
 #paste(aa2)
 #return(aa)
-aa0
+#aa0
+library(htmltools)
+#b<-leafletOutput(output)
+#b<-HTML(output)
+#k<-tags$html(output)
+#kk<-gsub('<div id="htmlwidget-6899" style="width:100%;height:400px;" class="leaflet"></div>','', k, fixed=TRUE)
+#kk2<-gsub('</html>','', kk, fixed=TRUE)
+#a<-toJSON(output)
+b<-tags$html(output) # script
+kk<-paste(capture.output(b),collapse='\n')
+return(kk)
 }
