@@ -62,17 +62,18 @@ $(function(){
   $("#plotbutton").on("click", function(e){
     e.preventDefault();
     $("#plotbutton").attr("disabled", "disabled")
-//    var req = $("#plotdiv").rplot("run_plot3", {
-  //    pgr_sm : parseFloat($("#pgr_sm").val()),
-    //  rnd : $("#rnd").val(),
+  //  var req = $("#plotdiv").rplot("run_plot_ll", {
+    //  pgr_sm : parseFloat($("#pgr_sm").val()),
+     // rnd : $("#rnd").val(),
     //  pgr_rb : parseFloat($("#pgr_rb").val())   
    // }).always(function(){
-     // $("#plotbutton").removeAttr("disabled");
+    //  $("#plotbutton").removeAttr("disabled");
    // }).fail(function(){
-   //   alert("HTTP error " + req.status + ": " + req.responseText);
-  //  });
+    //  alert("HTTP error " + req.status + ": " + req.responseText);
+   // });
  // });
-  
+//});
+
 var req = ocpu.rpc("run_plot_ll", { // 
    pgr_sm : parseFloat($("#pgr_sm").val()),
     rnd : $("#rnd").val(),
@@ -86,6 +87,21 @@ var req = ocpu.rpc("run_plot_ll", { //
     });
   });
 
+
+/*
+var req = ocpu.rplot("run_plot_ll", { // rpc
+   pgr_sm : parseFloat($("#pgr_sm").val()),
+    rnd : $("#rnd").val(),
+    pgr_rb : parseFloat($("#pgr_rb").val())   
+}, function(output){
+  $("#map1").html(output)
+}).always(function(){
+      $("#plotbutton").removeAttr("disabled");
+   }).fail(function(){
+      alert("HTTP error " + req.status + ": " + req.responseText);
+    });
+  });
+*/
 
 
 
