@@ -20,14 +20,22 @@
 
 
 <!-- javascript libraries -->
-
-<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
-<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-
 <script src="lib/htmlwidgets-0.5/htmlwidgets.js"></script>
 <script src="lib/jquery-1.11.1/jquery.min.js"></script>
+<link href="lib/leaflet-0.7.3/leaflet.css" rel="stylesheet" />
+<script src="lib/leaflet-0.7.3/leaflet.js"></script>
+<link href="lib/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="lib/leaflet-binding-1.0.0/leaflet.js"></script>
 
-<style> .htmlwidget_container { display: block; margin-left: auto; margin-right: auto; width: 500px; height: 300px; } .container{ margin-top: 40px; } .map1{ height: 480px; } </style>
+<!--
+<style>
+
+.leaflet { display: block; margin-left: auto; margin-right: auto; width: 150px; height: 150px; }
+
+.container{ margin-top: 40px; }
+
+</style>
+-->
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -65,7 +73,7 @@ $(function(){
   //  });
  // });
   
-var req = ocpu.rpc("run_plot3", { // 
+var req = ocpu.rpc("run_plot_ll", { // 
    pgr_sm : parseFloat($("#pgr_sm").val()),
     rnd : $("#rnd").val(),
     pgr_rb : parseFloat($("#pgr_rb").val())   
@@ -166,7 +174,8 @@ $(function(){
       </div>
       
       <div class="span6">
-        <div id="map1"></div>
+        <div id="map1">
+	</div>
       </div>
 <!--    </div>-->
     </div>
