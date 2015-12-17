@@ -27,15 +27,6 @@
 <link href="lib/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
 <script src="lib/leaflet-binding-1.0.0/leaflet.js"></script>
 
-<!--
-<style>
-
-.leaflet { display: block; margin-left: auto; margin-right: auto; width: 150px; height: 150px; }
-
-.container{ margin-top: 40px; }
-
-</style>
--->
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -51,63 +42,8 @@
 <script src="bootstrap/js/bootstrap.js"> </script>
 <script src="jqueryui/jquery-ui-1.10.3.custom.js"> </script>
  <script src="js/leaflet.js"></script>
-
+<script src="app.js"></script>
 <script> 
-$(function(){
-
-  //optional, requires jquery-ui.
-  //$("#plotdiv").resizable()
-  
-  //button handler
-  $("#plotbutton").on("click", function(e){
-    e.preventDefault();
-    $("#plotbutton").attr("disabled", "disabled")
-  //  var req = $("#plotdiv").rplot("run_plot_ll", {
-    //  pgr_sm : parseFloat($("#pgr_sm").val()),
-     // rnd : $("#rnd").val(),
-    //  pgr_rb : parseFloat($("#pgr_rb").val())   
-   // }).always(function(){
-    //  $("#plotbutton").removeAttr("disabled");
-   // }).fail(function(){
-    //  alert("HTTP error " + req.status + ": " + req.responseText);
-   // });
- // });
-//});
-
-var req = ocpu.rpc("run_plot_ll", { // 
-   pgr_sm : parseFloat($("#pgr_sm").val()),
-    rnd : $("#rnd").val(),
-    pgr_rb : parseFloat($("#pgr_rb").val())   
-}, function(output){
-  $("#map1").html(output)
-}).always(function(){
-      $("#plotbutton").removeAttr("disabled");
-   }).fail(function(){
-      alert("HTTP error " + req.status + ": " + req.responseText);
-    });
-  });
-
-
-/*
-var req = ocpu.rplot("run_plot_ll", { // rpc
-   pgr_sm : parseFloat($("#pgr_sm").val()),
-    rnd : $("#rnd").val(),
-    pgr_rb : parseFloat($("#pgr_rb").val())   
-}, function(output){
-  $("#map1").html(output)
-}).always(function(){
-      $("#plotbutton").removeAttr("disabled");
-   }).fail(function(){
-      alert("HTTP error " + req.status + ": " + req.responseText);
-    });
-  });
-*/
-
-
-
-  //plot the default values on page load
-<!--  $("#plotbutton").trigger("click")-->
-});
 
 $(function(){
   //button handler
@@ -184,17 +120,15 @@ $(function(){
             <label>Potential growth rate of salt marsh</label> 
             <input class="input-small" id="pgr_sm" type="number" value="0.2" step="0.1"></input>  
             <br />      
-            <button class="btn btn-small btn-primary" id="plotbutton"><i class="icon-ok icon-white"></i> Run model</button>
+            <button class="btn btn-small btn-primary" type="submit" id="mapsubmit"><i class="icon-ok icon-white"></i> Run model</button>
           </fieldset>
         </form>
       </div>
-      
       <div class="span6">
-        <div id="map1">
-	</div>
+        <iframe src="about:blank"></iframe>
       </div>
-<!--    </div>-->
     </div>
+
     <div id="menu1" class="tab-pane fade">
 	  <div class="span3">
         <form class="well" id="paramform1">
