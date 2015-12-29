@@ -2,8 +2,8 @@ Package: spdynmodocpu
 Type: Package
 Title: A GUI for spdynmod using OpenCPU
 Description: A graphical user interface for the spdynmod R package using OpenCPU.
-Version: 1.0
-Date: 2015-08-22
+Version: 1.1
+Date: 2015-012-29
 Author: Juan Arevalo Torres <juan.arevalo.torres@gmail.com>, Javier Martinez-Lopez <javi.martinez.lopez@gmail.com>
 Maintainer: Javier Martinez-Lopez <javi.martinez.lopez@gmail.com>
 License: GPL (>= 2)
@@ -12,10 +12,12 @@ BugReports: http://github.com/javimarlop/spdynmodocpu/issues
 LazyLoad: yes
 LazyData: yes
 VignetteBuilder: knitr
+Imports:
+    leaflet,
+    htmlwidgets
 Depends:
     spdynmod,
-    opencpu,
-    leaflet
+    opencpu
 Suggests:
     knitr,
     roxygen2,
